@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Simple Add to Cart</title>
+  <style>
+    .product {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .cart-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+    a i {
+      float: right;
+      font-size: 1.5rem;
+      position: fixed;
+      right: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="./add_a_cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+  <h1>ADD TO CART</h1>
+  <div class="continer">
+    
+  </div>
+  <script>
+
+    let obj = [
+      {
+        img: 'https://praakritik.com/cdn/shop/files/Jaggery900gm__1.png?v=1726211641&width=533',
+        name: 'JAGGERY - $20',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGxp4TKr5kkuB8RIrDBMfdNU_tkheCEl8FnA&s',
+        name: 'DRY PETHA - $150',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://www.thedivinefoods.com/cdn/shop/files/Turmeric_Powder.png?v=1727342068',
+        name: 'TUEMERIC POWDER- $35',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdi67DWxUQAj31wGgnSJXC8Sb2BCYOBCu7Ww&s',
+        name: 'DHANIYA POWDER- $25',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlJWrEn59xSJDzkmRrnpkvnNnaApU1h1cv2Q&s',
+        name: 'SEZWAN CHATNI- $15',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTyb47Sj1MS49gPNjeaDVJda0p552MUhd8bg&s',
+        name: 'GHEE CAKE- $25',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://godrejyummiez.in/images/products/details/Non-Veg/Crispy_Chicken_Bites.png',
+        name: 'YUMMIEZ- $50',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHKEun1F6WICBEJYjYK6IK4Rv3o9t9GkJog&s',
+        name: 'AJWAIN COOKIES- $250',
+        description: 'Description: A premium product with excellent features.'
+      }
+    ]
+
+    obj.forEach((val) => {
+      let con=document.querySelector('.continer');
+    con.innerHTML+=`
+    
+    <div class="product">
+      <img
+        src="${val.img}"
+        alt="Product 2 Image" class="product-image">
+      <h2>${val.name}</h2>
+      <p>${val.description}</p>
+     <button onclick="senddata('${val.img}','${val.name}','${val.description}')">Add to Cart</button>
+    </div>
+    `
+    });
+
+    let arr=[];
+    function senddata(img,name,description){
+      arr.push({img,name,description})
+      localStorage.setItem('product',JSON.stringify(arr));
+    }
+
+  </script>
+</body>
+
+</html>
